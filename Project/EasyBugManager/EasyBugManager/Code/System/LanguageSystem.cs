@@ -1,6 +1,9 @@
 ﻿/* By: 絮大王（sukiup@163.com）
    Time：2019年11月15日12:46:21*/
 
+/* Add french by AudricSan
+   Time: 2024年06月22日*/
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -364,6 +367,10 @@ namespace EasyBugManager
                 case LanguageType.English:
                     _dictionaryFilePath = "/EasyBugManager;component/Xaml/Dictionary/Theme/" + _themeType + "/EnglishTextDictionary.xaml";
                     break;
+                
+                case LanguageType.French:
+                    _dictionaryFilePath = "/EasyBugManager;component/Xaml/Dictionary/Theme/" + _themeType + "/FrenchTextDictionary.xaml";
+                    break;
             }
 
             //创建1个新的资源字典
@@ -445,6 +452,37 @@ namespace EasyBugManager
 
                     AppManager.Datas.AppData.BugNameMaxLength = 200;
                     break;
+                
+                // French
+                case LanguageType.French:
+                    ErrorTipTitle = "Erreur";
+                    OpenProjectErrorTipContent = "Désolé, ce fichier n'est pas un fichier projet pour le logiciel Easy Bug Manager.";
+                    UnableToExportTipContent = "Impossible d'exporter le projet vers un fichier Excel ! \nVeuillez ouvrir un projet avant d'exporter.";
+
+                    NoProjectNameTip = "( Veuillez entrer le nom du projet. )";
+                    NoSaveLocationTip = "( Veuillez choisir un dossier de sauvegarde. )";
+                    UnknownErrorTip = "( Désolé, une erreur inconnue est survenue. )";
+
+                    NoBugNameTip = "( Veuillez entrer le nom du bug. )";
+
+                    UpdateNumberFrontText = "(Après ";
+                    UpdateNumberBehindText = " mises à jour)";
+
+                    ExportSucceededTipTitle = "Exportation réussie !";
+
+                    NotOpenFileErrorTip = "Erreur lors de l'ouverture du fichier.";
+
+                    CollaborativeModeTestTipTitle = "Astuce";
+                    CollaborativeModeTestTipContent = "[Mode Collaboratif] est actuellement en phase de test bêta, il peut y avoir des défauts.\nNous espérons que vous pourrez être indulgent avec nous, n'hésitez pas à nous faire part de vos suggestions, merci beaucoup !";
+                    CollaborativeModeString = "Mode Collaboratif";
+
+                    LatelyProjectTipTitle = "Le fichier projet n'existe pas";
+                    LatelyProjectTipContent = "Voulez-vous retirer ce projet de la liste ?";
+                    LatelyProjectItemOpenFolderString = "Ouvrir le dossier";
+                    LatelyProjectItemRemoveString = "Retirer de la liste";
+
+                    AppManager.Datas.AppData.BugNameMaxLength = 200;
+                    break;
             }
         }
 
@@ -497,13 +535,25 @@ namespace EasyBugManager
                     AppManager.Uis.SyncUi.UiControl.NumberOfSyncTitleTextBlock.Text = "Number of syncs :  ";
                     AppManager.Uis.SyncUi.UiControl.LastSyncTimeTitleTextBlock.Text = "Last sync :  ";
                     break;
+                    
+                // French
+                case LanguageType.French:
+                    //[创建项目界面]
+                    AppManager.Uis.CreateProjectUi.UiControl.EnAdvancedOptionsButton.Visibility = Visibility.Visible;
+                    AppManager.Uis.CreateProjectUi.UiControl.CnAdvancedOptionsButton.Visibility = Visibility.Collapsed;
+                    Canvas.SetLeft(AppManager.Uis.CreateProjectUi.UiControl.IsCollaborationModeCheckControl, 220);
+                    Canvas.SetLeft(AppManager.Uis.CreateProjectUi.UiControl.IsCollaborationModeBorder, 64);
+
+                    //[同步界面]
+                    AppManager.Uis.SyncUi.UiControl.EnSyncButtonGrid.Visibility = Visibility.Visible;
+                    AppManager.Uis.SyncUi.UiControl.CnSyncButtonGrid.Visibility = Visibility.Collapsed;
+                    AppManager.Uis.SyncUi.UiControl.SyncLogTitleTextBlock.Text = "Journaux de synchronisation";
+                    AppManager.Uis.SyncUi.UiControl.NumberOfSyncTitleTextBlock.Text = "Nombre de synchronisations :  ";
+                    AppManager.Uis.SyncUi.UiControl.LastSyncTimeTitleTextBlock.Text = "Dernière synchronisation :  ";
+                    break;
             }
         }
         #endregion
-
-
-
-
 
         #region 数据的双向绑定-更新方法
 
